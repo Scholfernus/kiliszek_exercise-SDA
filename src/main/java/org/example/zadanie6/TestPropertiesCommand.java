@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Data
 public class TestPropertiesCommand implements CommandLineRunner {
 
-    private final ExampleValidation validation;
+    private final Properties properties;
     @Override
     public void run(String... args) throws Exception {
-    log.info(validation.toString());
+    log.info(properties.toString());
     }
 }

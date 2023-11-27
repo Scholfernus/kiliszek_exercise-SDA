@@ -1,7 +1,6 @@
 package org.example.zadanie6;
 
 import lombok.Data;
-import lombok.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -17,24 +16,26 @@ import java.util.Objects;
 @Configuration
 @ConfigurationProperties(prefix = "pl.sdacademy.zad6")
 @Validated
-public class ExampleValidation {
+public class Properties {
 
     @Email
     private String email;
-
     private String firstName;
-    @Size(min=3,max = 20)
+    @Size(min = 3, max = 20)
     private String lastName;
+    @Pattern(regexp = "\\w+ \\d")
     private String address;
     @Min(value = 18)
     private int age;
     @NotEmpty
-    private List<String> values;
+    private List<String> value;
     @NotEmpty
-    private Map<String,String> customAttributes;
+    private Map<String, String> customAttributes;
 
-    @AssertTrue(message = "one field id empty")
-    public boolean isNotEmpty() {
-        return Objects.nonNull(firstName) && Objects.nonNull(email);
+    /*można użyć asercji, która będzie nam sprawdzać poprawność adresu lub skorzystać z adnotacji nad polem address*/
+    @AssertTrue
+    public boolean isCorrectAddress() {
+        return address != null && address.split(" ").length == 2;
     }
+
 }
