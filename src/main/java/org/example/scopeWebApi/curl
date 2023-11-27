@@ -1,0 +1,5 @@
+curl -j http:/localhost:8080/scopes/session
+
+polecenie to służy do wywoływania kolejnej sesji. Na przykład użytkownik loguje się, następnie, kończy sesję,
+wylogowuje się i ponownie rozpoczyna sesję, tak naprawdę umożliwia nam to korzystanie z tzw. kolejnej sesji
+z konsoli gitowej uruchamiamy to polecenie
